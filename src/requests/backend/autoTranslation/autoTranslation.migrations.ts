@@ -82,14 +82,14 @@ export const AutoTranslationMigration = createMigrationTask([
 		async migrate() {
 			// This migration ensures Japanese pages are always auto-translated
 			// by setting up a global site preference pattern
-			
+
 			// Set global preference for all sites to auto-translate Japanese
 			await setPreferences('*', {
 				enableAutoTranslate: true,
 				autoTranslateLanguages: ['ja'],
 				autoTranslateIgnoreLanguages: [],
 			});
-			
+
 			// Also ensure the language preference is set to enabled
 			await addLanguage('ja', true);
 		},

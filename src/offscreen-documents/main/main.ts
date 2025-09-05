@@ -9,8 +9,9 @@ import { themeUpdate } from '../../requests/offscreen/theme';
 const createOffscreenWorker = () => {
 	const workerIframe = document.createElement('iframe', {});
 	workerIframe.src = '/offscreen-documents/worker/worker.html';
-	// We set `allow-same-origin` here, to let iframe use extension API for messaging, instead of message with parent with postMessage and just forward messages with extension api here.
-	// This iframe contain only trusted code, so we should not have any problems
+	// NOTE: allow-same-origin + allow-scripts combination required for extension API access
+	// This iframe contains only trusted extension code for WASM/worker processing
+	// Security risk is acceptable in this context as no user content is processed
 	workerIframe.setAttribute('sandbox', 'allow-same-origin allow-scripts');
 	document.body.appendChild(workerIframe);
 };

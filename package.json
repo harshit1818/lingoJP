@@ -16,7 +16,9 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"workspaces": ["./packages/*"],
+	"workspaces": [
+		"./packages/*"
+	],
 	"dependencies": {
 		"@bem-react/classname": "^1.5.10",
 		"@bem-react/core": "^3.0.1",
@@ -46,6 +48,7 @@
 	"devDependencies": {
 		"@babel/preset-env": "^7.28.0",
 		"@babel/preset-react": "^7.27.1",
+		"@cspell/eslint-plugin": "^9.2.1",
 		"@eslint/js": "^9.31.0",
 		"@svgr/webpack": "^8.1.0",
 		"@types/lodash": "^4.17.20",
