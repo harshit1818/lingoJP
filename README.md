@@ -15,6 +15,8 @@ LingoJP is built specifically for the Japanese→English translation workflow:
 
 LingoJP is free, open-source, and designed for efficient Japanese content consumption.
 
+**Based on [Linguist](https://github.com/translate-tools/linguist) by [Vitonsky](https://github.com/vitonsky) under BSD 3-Clause License.**
+
 # Features
 
 Japanese-focused features:
@@ -31,39 +33,73 @@ Japanese-focused features:
 
 # Installation
 
-## Development Version
+## 📦 Easy Installation (Recommended)
 
-1. Clone this repository
-2. Build the extension: `make dev` 
-3. Load in browser:
-   - **Chrome**: `chrome://extensions` → Enable "Developer mode" → "Load unpacked" → Select `build/dev/chrome/`
-   - **Firefox**: `about:debugging` → "This Firefox" → "Load Temporary Add-on" → Select `build/dev/firefox/manifest.json`
+### **Method 1: Download from GitHub Releases**
+1. Go to [Releases](https://github.com/harshit1818/lingoJP/releases)
+2. Download `LingoJP-Chrome-v1.0.0.zip` from the latest release
+3. Extract the ZIP file
+4. Install in Chrome:
+   - Open `chrome://extensions/`
+   - Enable "Developer mode" (top-right toggle)
+   - Click "Load unpacked"
+   - Select the extracted folder
+5. Start browsing Japanese websites! 🎌→🇺🇸
 
-## Release Version
-Check the [GitHub Releases page](https://github.com/harshit1818/lingoJP/releases) for packaged versions.
+**No setup needed** - just visit any Japanese website and it will automatically translate!
 
-## Android
+### **Method 2: Clone and Build**
+```bash
+git clone https://github.com/harshit1818/lingoJP.git
+cd lingoJP
+make dev
+```
+Then load `build/dev/chrome/` in Chrome extensions.
 
-<!-- Text partly copied from https://github.com/ajayyy/SponsorBlock/wiki/Android -->
+## 🦊 Firefox Installation
+1. Download the release ZIP
+2. Extract files
+3. Go to `about:debugging` → "This Firefox"
+4. Click "Load Temporary Add-on"
+5. Select `manifest.json` from extracted folder
 
-This addon can be used on mobile browsers with [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix) (Recommended), or with any chromium browser that supports extensions.
+# 🚀 How to Use
 
-To try it on Firefox, you have to add the [Linguist add-on](https://addons.mozilla.org/addon/linguist-translator/) to a [custom add-on collection](https://www.ghacks.net/2020/10/01/you-can-now-install-any-add-on-in-firefox-nightly-for-android-but-it-is-complicated/) and use this collection to install the extension.
+After installation, LingoJP works automatically:
 
-To try it on a chromium browser, download the normal extension for Chrome.
+1. **Visit any Japanese website** (e.g., Yahoo Japan, Japanese news sites)
+2. **Extension auto-detects Japanese text**
+3. **Page translates to English automatically**
+4. **Select Japanese text** → Right-click → "Translate selection"
+5. **Use extension popup** for manual text translation
 
-# Screenshots
+**Settings:** Click the LingoJP icon in your browser toolbar to access options.
 
-See more info on https://linguister.io
+# 🔧 Development
 
-![](./packages/site/static/screenshots/page-translation.png)
-![](./packages/site/static/screenshots/text-translation.png)
-![](./packages/site/static/screenshots/selected-text-translation.png)
-![](./packages/site/static/screenshots/settings.png)
+## Building from Source
+```bash
+git clone https://github.com/harshit1818/lingoJP.git
+cd lingoJP
+npm install
+make dev  # or make devChrome for Chrome specifically
+```
 
-# Development
+## Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-See [development docs](./docs/Development.md) to get info on how to build and debug.
+See [development docs](./docs/Development.md) for detailed build instructions.
+
+## 📱 Mobile Support
+
+This extension works on mobile browsers:
+- **Firefox Nightly** (Android) - Recommended
+- **Chromium browsers** with extension support
+
+## 🙏 Acknowledgments
 
 You can improve Linguist, [make issues](https://github.com/translate-tools/linguist/issues/new) and suggest features or report bugs.
 
