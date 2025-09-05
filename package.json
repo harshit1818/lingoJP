@@ -21,7 +21,7 @@
 	],
 	"dependencies": {
 		"@bem-react/classname": "^1.5.10",
-		"@bem-react/core": "^3.0.1",
+		"@bem-react/core": "^5.2.0",
 		"@popperjs/core": "^2.11.5",
 		"@react-aria/interactions": "^3.9.1",
 		"@react-aria/utils": "^3.13.1",
