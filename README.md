@@ -1,37 +1,46 @@
-Linguist is a powerful browser extension that is ready to replace your favorite translation service.
+LingoJP is a Japanese-focused browser extension designed specifically for translating Japanese content to English automatically.
 
-Translate web pages, highlighted text, Netflix subtitles, private messages, speak the translated text, and save important translations to your personal dictionary to learn words in 130 languages.
+**Perfect for Japanese learners, researchers, and anyone regularly reading Japanese web content.**
 
-# Why Linguist?
+Automatically detects Japanese text and translates to English without manual language selection. Features one-click page translation, text selection translation, and intelligent auto-translation preferences.
 
-Unlike other browser extensions, Linguist is not just a wrapper over the Google Translator Widget; it's a full-featured and independent translation system. This is why with Linguist you can be private and translate texts offline on your device and use any translation service, [even your own](./docs/CustomTranslator.md) like ChatGPT. See a [custom translators list](https://github.com/translate-tools/linguist-translators) to find bindings for the most popular translation services.
+# Why LingoJP?
 
-Linguist is free, open-source, respects your privacy, and does not collect your personal data.
+LingoJP is built specifically for the Japanese→English translation workflow:
+- **Auto-detects Japanese**: No need to select source language every time
+- **Defaults to English**: Target language automatically set to English  
+- **Auto-translation**: Japanese pages translate automatically without clicking
+- **Privacy-focused**: Based on the open-source Linguist project, no data collection
+- **Multiple translators**: Support for Google, Microsoft, Yandex, and offline translation
+
+LingoJP is free, open-source, and designed for efficient Japanese content consumption.
 
 # Features
 
-Most important features
-- Modular translators system
-	- You can use any translation service like Google, Yandex, Bing, DeepL, ChatGPT, etc.
-	- [Custom translators](./docs/CustomTranslator.md): you can use your own translator module
-	- Offline translation. With embedded [Bergamot translator](https://github.com/browsermt/bergamot-translator), you can translate texts right on your device. Keep your privacy
-- All-in-one translation solution
-	- Full-page translation with flexible auto-translation configuration
-	- Highlighted text translation
-	- Translate any text input
-- Dictionary with saved translations
-- Translations history, to remember recently translated words
-- Text-to-speech (TTS)
+Japanese-focused features:
+- **Automatic Japanese Detection**: Always detects Japanese text automatically
+- **English Default**: Target language always defaults to English
+- **Auto-Translation**: Japanese pages automatically translate without manual intervention
+- **One-Click Translation**: Instant page and text translation
+- **Smart Language Panel**: Simplified Japanese→English interface
+- **Translation Services**: Support for Google, Microsoft, Yandex translators
+- **Offline Translation**: Built-in Bergamot translator for privacy
+- **Dictionary & History**: Save important Japanese→English translations
+- **Text Selection**: Translate selected Japanese text with popup
+- **Text-to-Speech**: Hear pronunciation of translated text
 
 # Installation
 
-Get the addon for your browser:
+## Development Version
 
-[![](./assets/firefox.png)](https://addons.mozilla.org/addon/linguist-translator/) [![](./assets/chrome.png)](https://chrome.google.com/webstore/detail/gbefmodhlophhakmoecijeppjblibmie)
+1. Clone this repository
+2. Build the extension: `make dev` 
+3. Load in browser:
+   - **Chrome**: `chrome://extensions` → Enable "Developer mode" → "Load unpacked" → Select `build/dev/chrome/`
+   - **Firefox**: `about:debugging` → "This Firefox" → "Load Temporary Add-on" → Select `build/dev/firefox/manifest.json`
 
-<!-- [![](./assets/edge.png)](#) -->
-
-If you have another browser, check out the [GitHub Releases page](https://github.com/vitonsky/linguist/releases). Download the package and install it manually in development mode.
+## Release Version
+Check the [GitHub Releases page](https://github.com/harshit1818/lingoJP/releases) for packaged versions.
 
 ## Android
 

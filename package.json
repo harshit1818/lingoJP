@@ -1,9 +1,9 @@
 {
-	"name": "browser-addon",
-	"version": "7.0.4",
-	"description": "Browser addon for fast translate text and pages",
+	"name": "lingo-jp",
+	"version": "1.0.0",
+	"description": "Japanese-focused web translation extension - automatically translates Japanese content to English",
 	"license": "GPL-3.0",
-	"author": "Vitonsky <https://github.com/vitonsky>",
+	"author": "harshit1818 <https://github.com/harshit1818>",
 	"scripts": {
 		"test": "vitest",
 		"test:all": "TEST_TARGETS=all npx vitest",
