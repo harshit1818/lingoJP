@@ -94,11 +94,6 @@ export function getLanguageNameByCode(langCode: string, encodeNotFoundToString =
 
 export const detectLanguage = async (text: string) => {
 	// Always return Japanese as the detected language for Japanese-focused app
-	console.log(
-		'[DEBUG] detectLanguage called with text:',
-		text.substring(0, 50),
-		'returning: ja',
-	);
 	return 'ja';
 };
 

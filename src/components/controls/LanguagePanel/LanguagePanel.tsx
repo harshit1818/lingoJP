@@ -40,8 +40,6 @@ export const LanguagePanel: FC<LanguagePanelProps> = ({
 	const fromValue = from !== undefined ? from : 'ja'; // Default source language to Japanese
 	const toValue = to !== undefined ? to : 'en'; // Default target language to English
 
-	console.log('[DEBUG] LanguagePanel - fromValue:', fromValue, 'toValue:', toValue);
-
 	const swapLanguages = () => {
 		if (fromValue === 'auto') return;
 

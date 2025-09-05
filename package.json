@@ -10,9 +10,8 @@
 		"build:dev": "EXT_TARGET=firefox webpack-cli -wc ./webpack.config.js",
 		"build:tokens": "themekit build -c themekit.config.json",
 		"release:patch": "npm version patch",
-		"prettify": "prettier --write \"{*,**/*}.{ts,tsx,js,jsx}\" && eslint --fix \".\" && stylelint --fix \"{*,**/*}.css\"",
-		"lint": "prettier \"{*,**/*}.{ts,tsx,js,jsx}\" --check && eslint --max-warnings 0 . && stylelint --fix \"{*,**/*}.css\"",
-		"prepare": "husky install"
+		"prettify": "prettier --write \"{*,**/*}.{ts,tsx,js,jsx}\" && eslint --fix \".\"",
+		"lint": "prettier \"{*,**/*}.{ts,tsx,js,jsx}\" --check && eslint --max-warnings 0 ."
 	},
 	"engines": {
 		"node": ">=20"
@@ -47,9 +46,6 @@
 	"devDependencies": {
 		"@babel/preset-env": "^7.28.0",
 		"@babel/preset-react": "^7.27.1",
-		"@commitlint/cli": "^19.8.1",
-		"@commitlint/config-conventional": "^19.8.1",
-		"@cspell/eslint-plugin": "^9.2.0",
 		"@eslint/js": "^9.31.0",
 		"@svgr/webpack": "^8.1.0",
 		"@types/lodash": "^4.17.20",
@@ -78,11 +74,7 @@
 		"eslint-plugin-unused-imports": "^4.1.4",
 		"fake-indexeddb": "^6.0.1",
 		"file-loader": "^6.2.0",
-		"husky": "^9.1.7",
-		"jest-localstorage-mock": "^2.4.26",
-		"jest-webextension-mock": "^3.7.22",
 		"jsdom": "^26.1.0",
-		"lint-staged": "^16.1.2",
 		"mini-css-extract-plugin": "^2.9.2",
 		"postcss-loader": "^8.1.1",
 		"postcss-rem-to-pixel": "^4.1.2",

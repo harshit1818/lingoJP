@@ -70,7 +70,6 @@ export const AutoTranslationMigration = createMigrationTask([
 		 * Set Japanese as default auto-translate language for Japanese-focused app
 		 */
 		async migrate() {
-			console.log('[DEBUG] Setting Japanese as auto-translate language');
 			// Set Japanese to always auto-translate
 			await addLanguage('ja', true);
 		},
