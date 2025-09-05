@@ -79,12 +79,16 @@ export const PageTranslatorTab: TabComponent<InitFn<InitData>> = ({
 	useEffect(() => {
 		if (from === undefined) return;
 
-		const actualPreference = getTranslatePreferencesForSite(
-			from,
-			initData.sitePreferences,
-		);
+		// Get global preferences for fallback
+		getSitePreferences('*').then((globalPrefs) => {
+			const actualPreference = getTranslatePreferencesForSite(
+				from,
+				initData.sitePreferences,
+				globalPrefs,
+			);
 
-		setSitePreferencesState(actualPreference);
+			setSitePreferencesState(actualPreference);
+		});
 	}, [from, initData.sitePreferences]);
 
 	// Proxy for send requests by change `translateSite`
@@ -196,13 +200,20 @@ export const PageTranslatorTab: TabComponent<InitFn<InitData>> = ({
 		}
 
 		getLanguagePreferences(from).then((state) => {
-			setLanguagePreferencesState(
-				state === null
-					? languagePreferenceOptions.DISABLE
-					: state
-						? languagePreferenceOptions.ENABLE
-						: languagePreferenceOptions.DISABLE_FOR_ALL,
-			);
+			// Default Japanese to enabled if no preference is set
+			if (state === null && from === 'ja') {
+				setLanguagePreferencesState(languagePreferenceOptions.ENABLE);
+				// Set the preference in storage
+				addLanguagePreferences(from, true);
+			} else {
+				setLanguagePreferencesState(
+					state === null
+						? languagePreferenceOptions.DISABLE
+						: state
+							? languagePreferenceOptions.ENABLE
+							: languagePreferenceOptions.DISABLE_FOR_ALL,
+				);
+			}
 		});
 	}, [from]);
 
@@ -328,8 +339,9 @@ PageTranslatorTab.init = async ({ translatorFeatures, config }): Promise<InitDat
 	const url = new URL(pageUrl);
 	const hostname = url.host;
 
-	// Get site preferences
+	// Get site preferences and global preferences
 	const sitePreferences = await getSitePreferences(hostname);
+	const globalPreferences = await getSitePreferences('*');
 
 	// Get tab id
 	const tabId = await getCurrentTabId();
@@ -367,9 +379,17 @@ PageTranslatorTab.init = async ({ translatorFeatures, config }): Promise<InitDat
 	const sitePreferencesForLanguage = getTranslatePreferencesForSite(
 		from,
 		sitePreferences,
+		globalPreferences,
 	);
-	const languagePreferences =
-		await getLanguagePreferences(from).then(mapLanguagePreferences);
+	const languagePreferences = await getLanguagePreferences(from).then((state) => {
+		// Default Japanese to enabled if no preference is set
+		if (state === null && from === 'ja') {
+			// Set the preference in storage for future
+			addLanguagePreferences(from, true);
+			return languagePreferenceOptions.ENABLE;
+		}
+		return mapLanguagePreferences(state);
+	});
 
 	const pageTranslationStorage = new PageTranslationStorage();
 	const isShowOptions = await pageTranslationStorage

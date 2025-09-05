@@ -11,6 +11,7 @@ import { SitePrefs } from '../PageTranslator@tab';
 export const getTranslatePreferencesForSite = (
 	lang: string,
 	sitePreferences: SitePrefs,
+	globalPreferences?: SitePrefs,
 ) => {
 	// Set default
 	let translatePreference: RecordValues<typeof sitePreferenceOptions> =
@@ -38,6 +39,11 @@ export const getTranslatePreferencesForSite = (
 			} else if (isAutoTranslatedLang) {
 				translatePreference = sitePreferenceOptions.ALWAYS_FOR_THIS_LANGUAGE;
 			}
+		}
+	} else if (globalPreferences !== null && globalPreferences !== undefined) {
+		// Check global preferences when no site-specific preferences exist
+		if (globalPreferences.autoTranslateLanguages.includes(lang)) {
+			translatePreference = sitePreferenceOptions.ALWAYS_FOR_THIS_LANGUAGE;
 		}
 	}
 

@@ -257,7 +257,21 @@ export class PageTranslationContext {
 
 		let isNeedAutoTranslate = false;
 
-		// Consider site preferences
+		// For Japanese-focused app: Always auto-translate Japanese pages
+		if (pageLanguage === 'ja') {
+			isNeedAutoTranslate = true;
+		}
+
+		// Check global auto-translate setting
+		const globalPreferences = await getSitePreferences('*');
+		if (globalPreferences?.enableAutoTranslate) {
+			// Check if this language is in the auto-translate list
+			if (globalPreferences.autoTranslateLanguages.includes(pageLanguage)) {
+				isNeedAutoTranslate = true;
+			}
+		}
+
+		// Consider site-specific preferences (can override global settings)
 		const pageHost = location.host;
 		const sitePreferences = await getSitePreferences(pageHost);
 		const isSiteRequireTranslate = isRequireTranslateBySitePreferences(
@@ -265,21 +279,20 @@ export class PageTranslationContext {
 			sitePreferences,
 		);
 		if (isSiteRequireTranslate !== null) {
-			// Never translate this site
+			// Site specifically says don't translate - override everything else
 			if (!isSiteRequireTranslate) return;
 
-			// Otherwise translate
+			// Site specifically says translate
 			isNeedAutoTranslate = true;
 		}
 
-		// Consider common language preferences
-		const isLanguageRequireTranslate = await getLanguagePreferences(pageLanguage);
-		if (isLanguageRequireTranslate !== null) {
-			// Never translate this language
-			if (!isLanguageRequireTranslate) return;
-
-			// Otherwise translate
-			isNeedAutoTranslate = true;
+		// Consider common language preferences (fallback)
+		if (!isNeedAutoTranslate) {
+			const isLanguageRequireTranslate = await getLanguagePreferences(pageLanguage);
+			if (isLanguageRequireTranslate !== null) {
+				if (!isLanguageRequireTranslate) return;
+				isNeedAutoTranslate = true;
+			}
 		}
 
 		if (isNeedAutoTranslate) {
