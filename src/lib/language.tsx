@@ -92,7 +92,7 @@ export function getLanguageNameByCode(langCode: string, encodeNotFoundToString =
 	return capitalizeString(languageName);
 }
 
-export const detectLanguage = async (text: string) => {
+export const detectLanguage = async (_text: string, _reliableOnly?: boolean) => {
 	// Always return Japanese as the detected language for Japanese-focused app
 	return 'ja';
 };

@@ -23,10 +23,14 @@ export const [translateFactory, translateRequest] = buildBackendRequest<
 				(from === 'auto' && !isSupportAutodetect) ||
 				(from !== 'auto' && !supportedLanguages.includes(from))
 			) {
-				throw new Error('Source language is not supported by selected translator');
+				throw new Error(
+					'Source language is not supported by selected translator',
+				);
 			}
 			if (!supportedLanguages.includes(to)) {
-				throw new Error('Target language is not supported by selected translator');
+				throw new Error(
+					'Target language is not supported by selected translator',
+				);
 			}
 
 			const scheduler = translateManager.getScheduler();
