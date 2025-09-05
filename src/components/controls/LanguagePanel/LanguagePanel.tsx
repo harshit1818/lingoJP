@@ -37,8 +37,10 @@ export const LanguagePanel: FC<LanguagePanelProps> = ({
 	preventFocusOnPress,
 	mobile,
 }) => {
-	const fromValue = from !== undefined ? from : auto ? 'auto' : languages[0];
-	const toValue = to !== undefined ? to : languages[0];
+	const fromValue = from !== undefined ? from : 'ja'; // Default source language to Japanese
+	const toValue = to !== undefined ? to : 'en'; // Default target language to English
+
+	console.log('[DEBUG] LanguagePanel - fromValue:', fromValue, 'toValue:', toValue);
 
 	const swapLanguages = () => {
 		if (fromValue === 'auto') return;

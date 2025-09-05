@@ -25,9 +25,13 @@ export class TextTranslatorStorage {
 	private readonly storeName = 'TextTranslatorStorage';
 
 	/**
-	 * Default data
+	 * Default data - set Japanese to English as default languages
 	 */
-	private readonly defaultData: TextTranslatorData = null;
+	private readonly defaultData: TextTranslatorData = {
+		from: 'ja',
+		to: 'en',
+		translate: null,
+	};
 
 	public getData = async () => {
 		const storeName = this.storeName;

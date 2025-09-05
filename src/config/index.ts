@@ -1,5 +1,4 @@
 import { isMobileBrowser } from '../lib/browser';
-import { getUserLanguage } from '../lib/language';
 import { AppConfigType } from '../types/runtime';
 import noTranslateSelectors from './no-translate-selectors.txt';
 
@@ -10,7 +9,7 @@ export const DEFAULT_TTS = 'google';
 export const defaultConfig: AppConfigType = {
 	translatorModule: DEFAULT_TRANSLATOR,
 	ttsModule: DEFAULT_TTS,
-	language: getUserLanguage(),
+	language: 'en', // Fixed target language to English
 	scheduler: {
 		useCache: true,
 		translateRetryAttemptLimit: 2,
